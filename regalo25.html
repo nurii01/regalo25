@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Regalo Sorpresa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .gift-images img {
+            width: 200px;
+            height: auto;
+            margin: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>¿Quieres saber tu regalo?</h1>
+    <button id="revealButton">Pulsa aquí</button>
+    <p id="firstMessage" class="hidden">Un vale para un masaje de la casa</p>
+    <p id="jokeMessage" class="hidden">¡Es broma! Haz click <a href="#" id="finalLink">aquí</a> y obtendréis vuestro regalo.</p>
+
+    <!-- Aquí aparecerán las imágenes del regalo -->
+    <div class="gift-images hidden" id="giftImages">
+        <h2>¡Aquí está vuestro verdadero regalo!</h2>
+        <!-- Nueva frase añadida -->
+        <p>Un viaje a... CERDEÑAAA!</p>
+        <img src="regalo1.jpg" alt="Regalo 1">
+        <img src="regalo2.jpg" alt="Regalo 2">
+        <img src="regalo3.jpg" alt="Regalo 3">
+    </div>
+
+    <script>
+        const revealButton = document.getElementById('revealButton');
+        const firstMessage = document.getElementById('firstMessage');
+        const jokeMessage = document.getElementById('jokeMessage');
+        const finalLink = document.getElementById('finalLink');
+        const giftImages = document.getElementById('giftImages');
+
+        // Evento para revelar la broma
+        revealButton.addEventListener('click', function() {
+            firstMessage.classList.remove('hidden');
+            jokeMessage.classList.remove('hidden');
+            revealButton.classList.add('hidden');
+        });
+
+        // Evento para mostrar las imágenes reales
+        finalLink.addEventListener('click', function(event) {
+            event.preventDefault();  // Evita que el enlace haga recargar la página
+            firstMessage.classList.add('hidden');  // Oculta el primer mensaje
+            jokeMessage.classList.add('hidden');   // Oculta el mensaje de broma
+            giftImages.classList.remove('hidden'); // Muestra las imágenes
+        });
+    </script>
+
+</body>
+</html>
